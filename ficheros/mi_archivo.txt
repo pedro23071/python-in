@@ -1,0 +1,3 @@
+texto insertado desde python 
+otexto insertado desde python 
+texto insertado desde python 
