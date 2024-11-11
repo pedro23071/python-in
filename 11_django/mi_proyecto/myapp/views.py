@@ -2,13 +2,15 @@ from django.shortcuts import render,  HttpResponse
 
 # Create your views here.
 
+
 def index(request):
-    return HttpResponse("hola desde INICIO")
+    return render(request, 'index.html')
 
 def pagina(request):
-    return HttpResponse("hola desde Pagina")
+    return render(request, 'pagina.html')
 
 def hola_mundo(request):
-    return HttpResponse("Hola mundo desde mi controlador")
+    return render(request, 'hola_mundo.html')
 
-
+def contacto(request, nombre):
+    return HttpResponse(f"Contacto: {nombre}")
