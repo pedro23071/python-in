@@ -14,7 +14,8 @@
         </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -36,6 +37,7 @@
         <hr>
         <div id="content">
             {% block content %}
+            <p>texto a heredar en el bloque (debe ser llamadado en el teplate que llama a este bloque)</p>
                 <!--Codigo que viene de tmplates -->
             {% endblock content %}
         </div>
