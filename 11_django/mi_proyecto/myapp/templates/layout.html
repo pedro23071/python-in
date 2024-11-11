@@ -18,23 +18,25 @@
         <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
     </head>
     <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        <h1>Sitio web Dajango</h1>
-        <hr/>
-        <ul>
-            <li>
-                <a href="/">Inicio</a>
-            </li>
-            <li>
-                <a href="/hola-mundo">Hola mundo</a>
-            </li>
-            <li>
-                <a href="/pagina">Pagina</a>
-            </li>
-        </ul>
-        <hr>
+        <header>
+            <h1>Sitio web Dajango</h1>
+        </header>
+        
+    
+        <nav>
+            <ul>
+                <li>
+                    <a href="/">Inicio</a>
+                </li>
+                <li>
+                    <a href="/hola-mundo">Hola mundo</a>
+                </li>
+                <li>
+                    <a href="/pagina">Pagina</a>
+                </li>
+            </ul>
+        </nav>
+        
         <div id="content">
             {% block content %}
             <p>texto a heredar en el bloque (debe ser llamadado en el teplate que llama a este bloque)</p>
@@ -42,6 +44,17 @@
             {% endblock content %}
         </div>
 
+
+        <footer id="footer">
+            <div class="footer-content">
+                <p>&copy; 2024 Sitio Web Django. Todos los derechos reservados.</p>
+                <div class="social-media">
+                    <a href="#" target="_blank" title="Facebook">Facebook</a> |
+                    <a href="#" target="_blank" title="Twitter">Twitter</a> |
+                    <a href="#" target="_blank" title="Instagram">Instagram</a>
+                </div>
+            </div>
+        </footer>
 
         <script src="" async defer></script>
     </body>
