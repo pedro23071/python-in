@@ -4,7 +4,14 @@ from django.shortcuts import render,  HttpResponse
 
 
 def index(request):
-    return render(request, 'index.html')
+    personas = [
+        {"nombre": "Juan", "apellido": "Pérez", "edad": 12},
+        {"nombre": "Ana", "apellido": "García", "edad": 34},
+        {"nombre": "Luis", "apellido": "Martínez", "edad": 10},
+        {"nombre": "Sofía", "apellido": "Rodríguez", "edad": 30}
+    ]
+    contexto = {'personas': personas}
+    return render(request, 'index.html', contexto)
 
 def pagina(request):
     return render(request, 'pagina.html')

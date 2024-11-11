@@ -1,12 +1,46 @@
 {% extends 'layout.html' %}
 
-
+{% comment %}
+    This is a comment in the template. It will not be rendered in the HTML output.
+{% endcomment %}
+    
 {% block titulo %}
     Inicio
 {% endblock titulo %}
     
-
 {% block content %}
     {{block.super}}
-    <h1>Index template test </h1> 
+    <h1>Index template Personas </h1> 
+   
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Edad</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for persona in personas %}
+                <tr>
+                        
+                    <td>{{ persona.nombre }}</td>
+                    <td>{{ persona.apellido }}</td>
+                    <td>{{ persona.edad }}</td>
+                    <td>
+                        {% if persona.edad > 18 %}
+                            Mayor de edad
+                        {% else %}
+                            Menor de edad
+                        {% endif %}
+                    </td>
+                </tr>
+            {% empty %}
+                <h3>No hay personas</h3>  
+            {% endfor %}
+        </tbody>
+    </table>
+
 {% endblock content %}

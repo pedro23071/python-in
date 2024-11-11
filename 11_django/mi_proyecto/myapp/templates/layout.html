@@ -26,13 +26,13 @@
         <nav>
             <ul>
                 <li>
-                    <a href="/">Inicio</a>
+                    <a href="{% url 'index' %}">Inicio</a>
                 </li>
                 <li>
-                    <a href="/hola-mundo">Hola mundo</a>
+                    <a href="{% url 'hola_mundo' %}">Hola mundo</a>
                 </li>
                 <li>
-                    <a href="/pagina">Pagina</a>
+                    <a href="{% url 'pagina' %}">Pagina</a>
                 </li>
             </ul>
         </nav>
