@@ -1,4 +1,5 @@
 from django.shortcuts import render,  HttpResponse
+from myapp.models import Article
 
 # Create your views here.
 personas = [
@@ -20,3 +21,21 @@ def hola_mundo(request):
 
 def contacto(request, nombre):
     return HttpResponse(f"Contacto: {nombre}")
+
+def crear_articulo(request, titulo, content, public):
+    articulo = Article(
+        title = titulo,
+        content = content,
+        public = public
+    )
+    articulo.save()
+    return HttpResponse(f"articulo creado {articulo.title} - {articulo.content}")
+
+
+def artuculo(request, articulo_id):
+    try:
+        articulo = Article.objects.get(id=articulo_id)
+        response = f"Articulo: {articulo.title} - {articulo.content}"
+    except:
+        response = "Articulo no encontrado"
+    return HttpResponse(response)

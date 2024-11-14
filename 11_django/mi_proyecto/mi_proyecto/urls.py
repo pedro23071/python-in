@@ -23,6 +23,8 @@ urlpatterns = [
     path('', myapp_views.index, name="index"),
     path('pagina/', myapp_views.pagina, name="pagina"),
     path('hola-mundo/', myapp_views.hola_mundo, name="hola_mundo"),
-    path('contacto/<str:nombre>/', myapp_views.contacto, name="contacto")
+    path('contacto/<str:nombre>/', myapp_views.contacto, name="contacto"),
+    path('crear-articulo/<str:titulo>/<str:content>/<str:public>/', myapp_views.crear_articulo, name="crear_articulo"),
+    path('articulo/<str:articulo_id>/', myapp_views.artuculo, name="get_articulo")
 ]
 
