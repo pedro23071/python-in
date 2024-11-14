@@ -1,3 +1,8 @@
+## ejecutar el servidor 
+```bash
+python manage.py runserver
+```
+
 # Django Models y Seeders
 
 ## Modelos: Definición en `models.py`
@@ -114,5 +119,5 @@ run_seeders()
 
 ---
 
-Este formato organiza la información en secciones claras y utiliza elementos de Markdown como tablas, bloques de código y encabezados para mejorar la legibilidad. ¡Listo para compartir o documentar en tu proyecto! 😊
+
 
