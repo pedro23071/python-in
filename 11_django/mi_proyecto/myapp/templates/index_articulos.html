@@ -31,11 +31,7 @@
                     <td>{{ articulo.content }}</td>
                     <td>{{ articulo.public }}</td>
                     <td>
-                        {% if articulo.public %}
-                            es publico
-                        {% else %}
-                            no es publico
-                        {% endif %}
+                        <a href="{% url 'eliminar_articulo' articulo_id=articulo.id %}">Eliminar</a>
                     </td>
                 </tr>
             {% empty %}

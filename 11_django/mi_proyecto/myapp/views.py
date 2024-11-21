@@ -1,4 +1,5 @@
-from django.shortcuts import render,  HttpResponse
+from django.shortcuts import render,  HttpResponse, redirect
+from django.http import Http404
 from myapp.models import Article
 
 # Create your views here.
@@ -53,5 +54,14 @@ def editar_articulo(request, articulo_id):
 
 
 def list_articulos(request):
-    articulos = Article.objects.all().order_by('-created_at')
+    articulos = Article.objects.all()
     return render(request, 'index_articulos.html', {'articulos': articulos})
+
+def eliminar_articulo(request, articulo_id):
+    try:
+        articulo = Article.objects.get(id=articulo_id)
+        articulo.delete()
+        # Redirigir o devolver una respuesta
+        return redirect('listar_articulos')  # Redirigir a la lista de artículos
+    except:
+        raise Http404("El artículo no existe.")
