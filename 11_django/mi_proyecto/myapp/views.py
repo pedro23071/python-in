@@ -1,6 +1,7 @@
 from django.shortcuts import render,  HttpResponse, redirect
 from django.http import Http404
 from myapp.models import Article
+from .forms import ArticleForm
 
 # Create your views here.
 personas = [
@@ -33,6 +34,23 @@ def crear_articulo(request, titulo, content, public):
     return HttpResponse(f"articulo creado {articulo.title} - {articulo.content}")
 
 
+""" ---------- empiezan los metodos CRUD para articulos ---------- """
+
+def create_articulo(request):
+    if request.method == 'POST':
+        form = ArticleForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()  # Guarda el nuevo artículo en la base de datos
+            return redirect('listar_articulos')  # Cambia esto a la URL que desees redirigir
+    else:
+        form = ArticleForm()
+    return render(request, 'create_articulo.html', {'form': form})
+
+    
+def save_articulo(request):
+    return render(request, 'create_articulo.html')
+
+
 def artuculo(request, articulo_id):
     try:
         articulo = Article.objects.get(id=articulo_id)
@@ -40,6 +58,11 @@ def artuculo(request, articulo_id):
     except:
         response = "Articulo no encontrado"
     return HttpResponse(response)
+
+
+def list_articulos(request):
+    articulos = Article.objects.all()
+    return render(request, 'index_articulos.html', {'articulos': articulos})
 
 
 def editar_articulo(request, articulo_id):
@@ -51,11 +74,6 @@ def editar_articulo(request, articulo_id):
     articulo.save()
     
     return HttpResponse(f"Articulo {articulo.id} editado: {articulo.title} - {articulo.content}")
-
-
-def list_articulos(request):
-    articulos = Article.objects.all()
-    return render(request, 'index_articulos.html', {'articulos': articulos})
 
 def eliminar_articulo(request, articulo_id):
     try:

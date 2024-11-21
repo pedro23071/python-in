@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+
+{% block titulo %}
+    crear Articulo
+{% endblock titulo %}
+
+
+{% block content %}
+    <h1>Crear Articulo</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }} <!-- Renderiza el formulario -->
+        <button type="submit">Guardar</button>
+    </form>
+{% endblock content %}

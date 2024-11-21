@@ -29,5 +29,7 @@ urlpatterns = [
     path('editar-articulo/<int:articulo_id>/', myapp_views.editar_articulo, name="editar_articulo"),
     path('list-articulo/', myapp_views.list_articulos, name="listar_articulos"),
     path('delete-articulo/<int:articulo_id>/', myapp_views.eliminar_articulo, name="eliminar_articulo"),
+    path('create-articulo/', myapp_views.create_articulo, name="create_articulo"),
+    path('save-articulo/<int:articulo_id>/', myapp_views.save_articulo, name="save")
 ]
 
