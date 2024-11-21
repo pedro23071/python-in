@@ -39,3 +39,19 @@ def artuculo(request, articulo_id):
     except:
         response = "Articulo no encontrado"
     return HttpResponse(response)
+
+
+def editar_articulo(request, articulo_id):
+    articulo = Article.objects.get(id=articulo_id)
+    articulo.title = "Articulo editado con su nuevo titulo"
+    articulo.content = "Articulo editado con su nuevo contenido ..."
+    articulo.public = True
+    
+    articulo.save()
+    
+    return HttpResponse(f"Articulo {articulo.id} editado: {articulo.title} - {articulo.content}")
+
+
+def list_articulos(request):
+    articulos = Article.objects.all()
+    return render(request, 'index_articulos.html', {'articulos': articulos})

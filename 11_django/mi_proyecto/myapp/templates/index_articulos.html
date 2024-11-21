@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% comment %}
+    This is a comment in the template. It will not be rendered in the HTML output.
+{% endcomment %}
+    
+{% block titulo %}
+    Articulos
+{% endblock titulo %}
+    
+{% block content %}
+    
+    <h1>Articulos </h1> 
+   
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titulo</th>
+                <th>Contenido</th>
+                <th>Es Publico</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for articulo in articulos %}
+                <tr>
+                    <td>{{ articulo.id }}</td> 
+                    <td>{{ articulo.title }}</td>
+                    <td>{{ articulo.content }}</td>
+                    <td>{{ articulo.public }}</td>
+                    <td>
+                        {% if articulo.public %}
+                            es publico
+                        {% else %}
+                            no es publico
+                        {% endif %}
+                    </td>
+                </tr>
+            {% empty %}
+                <h3>No hay articulos</h3>  
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock content %}
