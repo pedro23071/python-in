@@ -119,8 +119,6 @@ from mi_app.seeder import run_seeders
 run_seeders()
 ```
 
-
-
 # Django Models: Order By y Limit
 
 En Django, los métodos `order_by()` y slicing (`[:limit]`) se utilizan para ordenar y limitar los resultados de una consulta a la base de datos.
@@ -250,3 +248,29 @@ articulos = Article.objects.all().order_by('-created_at')[:10]
 ```
 
 Esto obtiene los 10 artículos más recientes.
+
+
+# Resumen de Métodos Útiles en Django QuerySet
+
+
+| Método              | Descripción                                                                 |
+| -------------------- | ---------------------------------------------------------------------------- |
+| `all()`              | Obtiene todos los registros.                                                 |
+| `get()`              | Obtiene un único registro que cumple una condición.                        |
+| `filter()`           | Filtra registros que cumplen una condición.                                 |
+| `exclude()`          | Excluye registros que cumplen una condición.                                |
+| `values()`           | Devuelve un diccionario con campos específicos.                             |
+| `values_list()`      | Devuelve listas/tuplas de campos específicos.                               |
+| `distinct()`         | Elimina registros duplicados.                                                |
+| `first()`, `last()`  | Devuelve el primer o último registro.                                       |
+| `count()`            | Cuenta el número de registros.                                              |
+| `exists()`           | Verifica si hay registros que cumplen una condición.                        |
+| `update()`           | Actualiza registros masivamente.                                             |
+| `delete()`           | Elimina registros.                                                           |
+| `aggregate()`        | Realiza cálculos como`SUM`, `AVG`, `MAX`, `MIN`, `COUNT`.                   |
+| `annotate()`         | Agrega campos calculados al`QuerySet`.                                       |
+| `select_related()`   | Optimiza consultas para relaciones`ForeignKey` y `OneToOneField`.            |
+| `prefetch_related()` | Optimiza consultas para relaciones`ManyToManyField` y `ForeignKey` inversas. |
+| `reverse()`          | Invierte el orden del`QuerySet`.                                             |
+| `raw()`              | Ejecuta consultas SQL personalizadas.                                        |
+| `defer()`, `only()`  | Carga solo los campos necesarios o excluye campos no necesarios.             |
