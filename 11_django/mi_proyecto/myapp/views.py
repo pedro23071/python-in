@@ -53,5 +53,5 @@ def editar_articulo(request, articulo_id):
 
 
 def list_articulos(request):
-    articulos = Article.objects.all()
+    articulos = Article.objects.all().order_by('-created_at')
     return render(request, 'index_articulos.html', {'articulos': articulos})

@@ -1,4 +1,5 @@
-## ejecutar el servidor 
+## ejecutar el servidor
+
 ```bash
 python manage.py runserver
 ```
@@ -37,18 +38,19 @@ python manage.py migrate
 
 Django ofrece una amplia variedad de tipos de campo para definir los datos en tus modelos. Algunos de los más comunes son:
 
-| Campo            | Descripción                                            |
-|------------------|--------------------------------------------------------|
-| `CharField`      | Cadena de texto con longitud máxima definida.          |
-| `IntegerField`   | Números enteros.                                       |
-| `FloatField`     | Números decimales flotantes.                           |
-| `BooleanField`   | Valores booleanos (`True` o `False`).                  |
-| `DateField`      | Fecha (`YYYY-MM-DD`).                                  |
-| `DateTimeField`  | Fecha y hora (`YYYY-MM-DD HH:MM:SS`).                  |
-| `EmailField`     | Campo para direcciones de correo electrónico.          |
-| `TextField`      | Texto largo sin límite de longitud.                    |
-| `ForeignKey`     | Relación uno a muchos con otra tabla.                  |
-| `ManyToManyField`| Relación muchos a muchos con otra tabla.               |
+
+| Campo             | Descripción                                   |
+| ----------------- | ---------------------------------------------- |
+| `CharField`       | Cadena de texto con longitud máxima definida. |
+| `IntegerField`    | Números enteros.                              |
+| `FloatField`      | Números decimales flotantes.                  |
+| `BooleanField`    | Valores booleanos (`True` o `False`).          |
+| `DateField`       | Fecha (`YYYY-MM-DD`).                          |
+| `DateTimeField`   | Fecha y hora (`YYYY-MM-DD HH:MM:SS`).          |
+| `EmailField`      | Campo para direcciones de correo electrónico. |
+| `TextField`       | Texto largo sin límite de longitud.           |
+| `ForeignKey`      | Relación uno a muchos con otra tabla.         |
+| `ManyToManyField` | Relación muchos a muchos con otra tabla.      |
 
 ---
 
@@ -117,7 +119,134 @@ from mi_app.seeder import run_seeders
 run_seeders()
 ```
 
+
+
+# Django Models: Order By y Limit
+
+En Django, los métodos `order_by()` y slicing (`[:limit]`) se utilizan para ordenar y limitar los resultados de una consulta a la base de datos.
+
 ---
 
+## **`order_by()`**: Ordenar Resultados
+
+El método `order_by()` se utiliza para ordenar los resultados de una consulta en base a uno o varios campos del modelo.
+
+### **Uso Básico**
+
+```python
+Model.objects.all().order_by('campo')
+```
+
+#### Ejemplo:
+
+```python
+articulos = Article.objects.all().order_by('title')  # Ordena por título en orden ascendente
+```
+
+#### Orden Descendente:
+
+Usa un prefijo `-` para ordenar en orden descendente:
+
+```python
+articulos = Article.objects.all().order_by('-created_at')  # Ordena por fecha descendente
+```
+
+#### Múltiples Campos:
+
+Puedes ordenar por varios campos:
+
+```python
+articulos = Article.objects.all().order_by('public', '-created_at')  
+# Ordena por `public` ascendente y luego por `created_at` descendente
+```
+
+---
+
+## **Límite de Resultados (`[:limit]`)**
+
+Para limitar el número de registros devueltos, utiliza slicing (`[:n]`) en el queryset.
+
+### **Uso Básico**
+
+```python
+Model.objects.all()[:n]
+```
+
+#### Ejemplo:
+
+```python
+articulos = Article.objects.all()[:5]  # Obtiene los primeros 5 artículos
+```
+
+#### Combinar con `order_by()`:
+
+Puedes combinar `order_by()` y slicing para limitar resultados ordenados:
+
+```python
+articulos = Article.objects.all().order_by('-created_at')[:3]  
+# Obtiene los 3 artículos más recientes.
+```
+
+#### Excluir los Primeros Registros (`offset`):
+
+Puedes usar slicing para omitir los primeros registros:
+
+```python
+articulos = Article.objects.all()[5:]  # Omite los primeros 5 registros
+```
+
+---
+
+## **Ejemplo Completo**
+
+```python
+from django.shortcuts import render
+from .models import Article
+
+def list_articulos(request):
+    # Ordenar por fecha de creación descendente y limitar a 10 resultados
+    articulos = Article.objects.all().order_by('-created_at')[:10]
+    return render(request, 'index_articulos.html', {'articulos': articulos})
+```
+
+---
+
+## **SQL Generado por Django**
+
+- **`order_by('-created_at')`**:
+
+  ```sql
+  SELECT * FROM article ORDER BY created_at DESC;
+  ```
+- **`[:5]`**:
+
+  ```sql
+  SELECT * FROM article LIMIT 5;
+  ```
+- **Combinar `order_by` y `[:5]`**:
+
+  ```sql
+  SELECT * FROM article ORDER BY created_at DESC LIMIT 5;
+  ```
+
+---
+
+## Resumen
 
 
+| Función             | Descripción                                                 |
+| -------------------- | ------------------------------------------------------------ |
+| `order_by('campo')`  | Ordena los resultados en base al campo especificado.         |
+| `order_by('-campo')` | Ordena los resultados en orden descendente por el campo.     |
+| `[:n]`               | Limita el número de resultados devueltos a los primeros`n`. |
+| `[offset:]`          | Excluye los primeros`offset` registros de los resultados.    |
+
+---
+
+### Uso Típico:
+
+```python
+articulos = Article.objects.all().order_by('-created_at')[:10]
+```
+
+Esto obtiene los 10 artículos más recientes.
