@@ -1,7 +1,7 @@
 from django.shortcuts import render,  HttpResponse, redirect
 from django.http import Http404
 from myapp.models import Article
-from .forms import ArticleForm
+from myapp.forms import ArticleForm
 
 # Create your views here.
 personas = [
