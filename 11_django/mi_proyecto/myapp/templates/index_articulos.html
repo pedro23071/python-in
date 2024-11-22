@@ -31,6 +31,7 @@
                     <td>{{ articulo.content }}</td>
                     <td>{{ articulo.public }}</td>
                     <td>
+                        <a href="{% url 'update_artuculo' articulo_id=articulo.id %}">Editar</a>
                         <a href="{% url 'eliminar_articulo' articulo_id=articulo.id %}">Eliminar</a>
                     </td>
                 </tr>

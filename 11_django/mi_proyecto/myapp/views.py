@@ -1,4 +1,4 @@
-from django.shortcuts import render,  HttpResponse, redirect
+from django.shortcuts import get_object_or_404, render,  HttpResponse, redirect
 from django.http import Http404
 from myapp.models import Article
 from myapp.forms import ArticleForm
@@ -46,9 +46,21 @@ def create_articulo(request):
         form = ArticleForm()
     return render(request, 'create_articulo.html', {'form': form})
 
-    
-def save_articulo(request):
-    return render(request, 'create_articulo.html')
+
+
+def update_artuculo(request, articulo_id):
+    article = get_object_or_404(Article, id=articulo_id)
+    if request.method == 'POST':
+        # Vincular el formulario con los datos enviados y la instancia del artículo
+        form = ArticleForm(request.POST, request.FILES, instance=article)
+        if form.is_valid():
+            form.save()  # Actualizar el artículo existente
+            return redirect('listar_articulos')  # Redirigir a otra vista (lista de artículos, por ejemplo)
+    else:
+        # Crear el formulario con la instancia del artículo
+        form = ArticleForm(instance=article)
+
+    return render(request, 'edit_article.html', {'form': form})
 
 
 def artuculo(request, articulo_id):
@@ -60,9 +72,13 @@ def artuculo(request, articulo_id):
     return HttpResponse(response)
 
 
+
+
 def list_articulos(request):
     articulos = Article.objects.all()
     return render(request, 'index_articulos.html', {'articulos': articulos})
+
+
 
 
 def editar_articulo(request, articulo_id):
@@ -74,6 +90,8 @@ def editar_articulo(request, articulo_id):
     articulo.save()
     
     return HttpResponse(f"Articulo {articulo.id} editado: {articulo.title} - {articulo.content}")
+
+
 
 def eliminar_articulo(request, articulo_id):
     try:

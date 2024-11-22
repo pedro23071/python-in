@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+
+{% block titulo %}
+    Edita Articulo
+{% endblock titulo %}
+
+
+{% block content %}
+    <h1>Edita Articulo</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }} <!-- Renderiza el formulario -->
+        <button type="submit">Actualizar</button>
+    </form>
+{% endblock content %}
