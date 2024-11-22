@@ -8,6 +8,10 @@
 
 {% block content %}
     <h1>Crear Articulo</h1>
+
+    {% if form.error %}
+        <p style="color: red">{{ form.error }}</p>
+    {% endif %}
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }} <!-- Renderiza el formulario -->

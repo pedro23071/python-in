@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, render,  HttpResponse, redirect
 from django.http import Http404
 from myapp.models import Article
 from myapp.forms import ArticleForm
+from django.contrib import messages
 
 # Create your views here.
 personas = [
@@ -41,6 +42,8 @@ def create_articulo(request):
         form = ArticleForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()  # Guarda el nuevo artículo en la base de datos
+            
+            messages.success(request, 'Articulo creado existosamente')
             return redirect('listar_articulos')  # Cambia esto a la URL que desees redirigir
     else:
         form = ArticleForm()
@@ -55,6 +58,7 @@ def update_artuculo(request, articulo_id):
         form = ArticleForm(request.POST, request.FILES, instance=article)
         if form.is_valid():
             form.save()  # Actualizar el artículo existente
+            messages.success(request, 'Articulo Editado existosamente')
             return redirect('listar_articulos')  # Redirigir a otra vista (lista de artículos, por ejemplo)
     else:
         # Crear el formulario con la instancia del artículo
@@ -97,6 +101,8 @@ def eliminar_articulo(request, articulo_id):
     try:
         articulo = Article.objects.get(id=articulo_id)
         articulo.delete()
+        
+        messages.success(request, 'Articulo eliminado existosamente')
         # Redirigir o devolver una respuesta
         return redirect('listar_articulos')  # Redirigir a la lista de artículos
     except:

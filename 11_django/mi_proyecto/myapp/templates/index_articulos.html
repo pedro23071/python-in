@@ -12,6 +12,11 @@
     
     <h1>Articulos </h1> 
    
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{message}}</p>
+        {% endfor %}
+    {% endif %}
 
     <table border="1">
         <thead>
