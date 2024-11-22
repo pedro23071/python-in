@@ -1,0 +1,336 @@
+/* Reseteo básico de márgenes y padding para todo el documento */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos generales para el cuerpo de la página */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Estilo para el header */
+header {
+    background-color: #007bff; /* Azul vibrante */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+/* Estilo para el nav */
+nav {
+    background-color: #333; /* Gris oscuro */
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li:last-child {
+    margin-right: 0;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    padding: 8px 15px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #0056b3; /* Azul oscuro cuando se pasa el mouse */
+    border-radius: 4px;
+}
+
+/* Estilos para el header y nav */
+header, nav {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Párrafos */
+p {
+    margin-bottom: 1em;
+    color: #555;
+}
+
+/* Listas ordenadas y no ordenadas */
+ul, ol {
+    margin-left: 1.5em;
+    margin-bottom: 1em;
+}
+
+li {
+    margin-bottom: 0.5em;
+}
+
+/* Enlaces */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+/* Estilos para las tablas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5em;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Formularios */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="submit"],
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover,
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo de carga o spinner */
+.spinner {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Estilos para el header */
+header {
+    background-color: #007bff; /* Azul */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5em;
+}
+
+/* Estilo para el nav */
+nav {
+    background-color: #333;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li:last-child {
+    margin-right: 0;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    padding: 8px 15px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #0056b3; /* Azul oscuro */
+    border-radius: 4px;
+}
+
+
+
+/* Estilos generales para el contenido principal */
+#content {
+    background-color: #ffffff; /* Fondo blanco para el contenido */
+    color: #333333; /* Color del texto en gris oscuro */
+    padding: 20px; /* Espaciado interno alrededor del contenido */
+    margin-top: 20px; /* Margen superior */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave para darle profundidad */
+    max-width: 1200px; /* Máxima anchura para no hacer que el contenido se estire demasiado */
+    margin-left: auto;
+    margin-right: auto; /* Centrado horizontal */
+}
+
+/* Títulos dentro del contenido */
+#content h1, #content h2, #content h3 {
+    color: #007bff; /* Color azul para los encabezados */
+    font-family: 'Arial', sans-serif; /* Tipografía moderna y legible */
+    margin-bottom: 15px;
+}
+
+/* Títulos h1 */
+#content h1 {
+    font-size: 2.5em; /* Tamaño de fuente grande */
+}
+
+/* Títulos h2 */
+#content h2 {
+    font-size: 2em; /* Tamaño de fuente mediano */
+}
+
+/* Títulos h3 */
+#content h3 {
+    font-size: 1.5em; /* Tamaño de fuente pequeño */
+}
+
+/* Párrafos */
+#content p {
+    line-height: 1.6; /* Espaciado entre líneas para mejorar la legibilidad */
+    margin-bottom: 20px; /* Espaciado inferior */
+    font-size: 16px; /* Tamaño de fuente adecuado */
+}
+
+/* Estilo para bloques heredados */
+#content .block-content {
+    background-color: #f9f9f9; /* Fondo gris suave para los bloques heredados */
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #e0e0e0; /* Borde suave */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05); /* Sombra ligera */
+}
+
+/* Estilos para enlaces dentro del contenido */
+#content a {
+    color: #007bff; /* Color de los enlaces */
+    text-decoration: none; /* Sin subrayado */
+    transition: color 0.3s ease; /* Transición para un efecto suave */
+}
+
+#content a:hover {
+    color: #0056b3; /* Color más oscuro al pasar el mouse */
+    text-decoration: underline; /* Subrayado al hacer hover */
+}
+
+/* Estilo para listas */
+#content ul {
+    margin-left: 20px;
+    list-style: disc;
+}
+
+#content ol {
+    margin-left: 20px;
+    list-style: decimal;
+}
+
+/* Estilo para imágenes dentro del contenido */
+#content img {
+    max-width: 100%; /* Asegura que las imágenes no se desborden */
+    height: auto;
+    border-radius: 5px; /* Bordes redondeados para las imágenes */
+    margin-bottom: 20px;
+}
+
+
+/* Estilos para el pie de página */
+#footer {
+    background-color: #333; /* Color de fondo oscuro */
+    color: white; /* Texto blanco */
+    padding: 20px 0; /* Espaciado superior e inferior */
+    text-align: center; /* Centrado del texto */
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+#footer .footer-content {
+    max-width: 1200px; /* Máximo ancho */
+    margin: 0 auto; /* Centrado horizontal */
+    padding: 0 20px; /* Espaciado a los lados */
+}
+
+#footer p {
+    font-size: 1em; /* Tamaño de fuente más pequeño */
+    margin-bottom: 10px; /* Espaciado inferior */
+}
+
+#footer .social-media a {
+    color: white; /* Color blanco para los enlaces */
+    text-decoration: none; /* Sin subrayado */
+    padding: 0 10px; /* Espaciado horizontal entre los enlaces */
+}
+
+#footer .social-media a:hover {
+    color: #ffcc00; /* Color dorado al pasar el mouse */
+    text-decoration: underline; /* Subrayado al hacer hover */
+}
+
+/* Opcional: un borde superior para separar del contenido */
+#footer {
+    border-top: 2px solid #444; /* Borde superior gris */
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>
+            {% block titulo %}
+                
+            {% endblock titulo %}
+        </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    </head>
+    <body>
+        <header>
+            <h1>Sitio web Dajango</h1>
+        </header>
+        
+    
+        <nav>
+            <ul>
+                <li>
+                    <a href="{% url 'index' %}">Inicio</a>
+                </li>
+                <li>
+                    <a href="{% url 'about' %}">Sobre Notros</a>
+                </li>
+            </ul>
+        
+        </nav>
+        
+        <div id="content">
+            {% block content %}
+            <p>texto a heredar en el bloque (debe ser llamadado en el teplate que llama a este bloque)</p>
+                <!--Codigo que viene de tmplates -->
+            {% endblock content %}
+        </div>
+
+
+        <footer id="footer">
+            <div class="footer-content">
+                <p>&copy; 2024 Sitio Web Django. Todos los derechos reservados.</p>
+                <div class="social-media">
+                    <a href="#" target="_blank" title="Facebook">Facebook</a> |
+                    <a href="#" target="_blank" title="Twitter">Twitter</a> |
+                    <a href="#" target="_blank" title="Instagram">Instagram</a>
+                </div>
+            </div>
+        </footer>
+
+        <script src="" async defer></script>
+    </body>
+</html>
