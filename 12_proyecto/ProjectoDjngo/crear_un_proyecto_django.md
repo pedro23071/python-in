@@ -15,3 +15,9 @@
 > python manage.py sqlmigrate pages 0001
 >
 > python manage.py migrate
+
+
+## Crear un usuariop en el panes de control
+
+
+> python manage.py createsuperuser
