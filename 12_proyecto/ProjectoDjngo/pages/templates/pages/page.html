@@ -9,5 +9,5 @@
     <span>{{ page.created_at }}</span>
     <hr>
     <br>
-    <p>{{ page.content }}</p>
+    <p>{{ page.content|safe }}</p>
 {% endblock content %}
