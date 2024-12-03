@@ -16,8 +16,6 @@
 >
 > python manage.py migrate
 
-
 ## Crear un usuariop en el panes de control
-
 
 > python manage.py createsuperuser
