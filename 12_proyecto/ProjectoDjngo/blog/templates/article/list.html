@@ -17,6 +17,7 @@
                 <th>Es Publico</th>
                 <th>Categoria</th>
                 <th>Por</th>
+                <th>img</th>
             </tr>
         </thead>
         <tbody>
@@ -40,7 +41,11 @@
                         {% endfor %}
                     </td>
                     <td>{{ articulo.user.first_name  }} {{ articulo.user.last_name }}</td>
-                
+                    <td>
+                        <div class="image">
+                            <img src="{{ articulo.image.url }}" alt="Imagen de articulo">
+                        </div>
+                    </td>
                 </tr>
             {% empty %}
                 <h3>No hay articulos</h3>  
