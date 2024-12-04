@@ -1,0 +1,51 @@
+{% extends 'layouts/layout.html' %}
+
+{% block titulo %}
+    {{ title }}
+{% endblock titulo %}
+    
+{% block content %}
+    <h1>{{ title }}</h1>
+
+
+    <table border="1">
+        <thead>
+            <tr>
+            
+                <th>Titulo</th>
+                <th>Contenido</th>
+                <th>Es Publico</th>
+                <th>Categoria</th>
+                <th>Por</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for articulo in articles_list %}
+                <tr>
+                    <td>{{ articulo.title }}</td> 
+                    <td>{{ articulo.content|safe }}</td>
+                    <td>
+                        {% if articulo.public %}
+                            Publico
+                        {% else %}
+                            Privado
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% for category in articulo.categories.all %}
+                            {{ category.name }}
+                            {% if forloop.counter < articulo.categories.all|length %}
+                                {{ ' - ' }}
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>{{ articulo.user.first_name  }} {{ articulo.user.last_name }}</td>
+                
+                </tr>
+            {% empty %}
+                <h3>No hay articulos</h3>  
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock content %}
